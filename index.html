@@ -1,216 +1,602 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synergy B.I Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synergy B.I Solutions | Business Intelligence as a Service (BIaaS)</title>
+  <meta name="description" content="Synergy B.I Solutions provides Business Intelligence as a Service (BIaaS): data extraction, organization, analytics, dashboards, training and support for NGOs, government, and businesses." />
+  <meta name="robots" content="index,follow" />
+  <!-- TODO: Replace with your live site URL after publishing to GitHub Pages -->
+  <!-- <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO/" /> -->
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Synergy B.I Solutions | BI as a Service" />
+  <meta property="og:description" content="End-to-end BIaaS: extraction, warehousing, analytics, dashboards, training and support." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/favicon.png" />
   <style>
-    :root {
-      --primary: #0a66c2;
-      --secondary: #00509e;
-      --light: #f4f6f8;
-      --dark: #2b2b2b;
-      --accent: #ff9800;
+    :root{
+      --primary:#0a66c2;   /* brand blue */
+      --primary-600:#0a56a4;
+      --secondary:#ff9800; /* accent */
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --ring:rgba(10,102,194,.25);
+      --success:#16a34a;
+      --warning:#f59e0b;
+      --danger:#dc2626;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
     }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
+    [data-theme="dark"]{
+      --bg:#0b1020;
+      --surface:#121a2a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --shadow: 0 8px 24px rgba(0,0,0,.4);
     }
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    header img {
-      width: 100px;
-      display: block;
-      margin: 0 auto 1rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem;
-    }
-    h2 {
-      color: var(--primary);
-      border-left: 5px solid var(--accent);
-      padding-left: 10px;
-      margin-top: 2rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom: 1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .pricing {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .pricing:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-    .pricing h3 {
-      color: var(--secondary);
-    }
-    .pricing p.price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--accent);
-    }
-    footer {
-      background-color: var(--dark);
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 1rem;
-      background: var(--primary);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-    a.button:hover {
-      background: var(--secondary);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text); line-height:1.6}
+    img{max-width:100%; display:block}
+    .container{max-width:1160px;margin:0 auto;padding:0 1.25rem}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Top bar */
+    .topbar{background:linear-gradient(135deg,var(--primary),#1f7bd6); color:#fff}
+    .topbar .inner{display:flex;align-items:center;gap:.75rem;justify-content:space-between;padding:.5rem 0;font-size:.9rem}
+    .topbar a{color:#fff;opacity:.9;text-decoration:none}
+
+    /* Nav */
+    nav{position:sticky;top:0;z-index:50;background:var(--surface);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--text)}
+    .brand img{width:40px;height:40px;border-radius:10px}
+    .brand span{font-weight:800;letter-spacing:.2px}
+    .menu{display:flex;gap:1rem}
+    .menu a{padding:.5rem .75rem;border-radius:.6rem;text-decoration:none;color:var(--text)}
+    .menu a.active, .menu a:hover{background:rgba(10,102,194,.08)}
+    .cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--primary);color:#fff;padding:.6rem 1rem;border-radius:.75rem;text-decoration:none;font-weight:600;box-shadow:var(--shadow)}
+    .cta:hover{background:var(--primary-600)}
+    .nav-actions{display:flex;align-items:center;gap:.6rem}
+    .icon-btn{background:transparent;border:1px solid rgba(0,0,0,.08);padding:.55rem;border-radius:.6rem;cursor:pointer}
+    .icon-btn:focus{outline:3px solid var(--ring)}
+    .burger{display:none}
+
+    /* Hero */
+    header.hero{background:linear-gradient(180deg, rgba(10,102,194,.08), rgba(10,102,194,0)); padding:4rem 0 2rem}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid rgba(0,0,0,.08);color:var(--primary);padding:.25rem .5rem;border-radius:999px;font-weight:700}
+    .hero h1{font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.15;margin:.75rem 0}
+    .lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
+    .hero-cta{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap}
+    .ghost{border:1px solid rgba(10,102,194,.35);color:var(--primary);background:transparent}
+
+    .pill-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+    .pill{background:var(--surface);border:1px solid rgba(0,0,0,.06);padding:.35rem .6rem;border-radius:999px;font-size:.85rem;color:var(--muted)}
+
+    /* Sections */
+    section{padding:3rem 0}
+    section h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:0 0 1rem}
+    .subtle{color:var(--muted)}
+
+    /* Cards & grids */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .card{background:var(--surface);border:1px solid rgba(0,0,0,.06);border-radius:1rem;padding:1.25rem;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
+    .card:hover{transform:translateY(-3px)}
+    .card h3{margin:.25rem 0 .5rem;font-size:1.15rem}
+    .badge{display:inline-block;background:rgba(10,102,194,.1);color:var(--primary);padding:.25rem .5rem;border-radius:.5rem;font-size:.8rem;font-weight:700}
+
+    /* Pricing */
+    .pricing-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .price-card{position:relative}
+    .price{font-size:1.75rem;font-weight:800}
+    .price small{font-weight:600;color:var(--muted)}
+    .popular{border:2px solid var(--primary)}
+    .ribbon{position:absolute;top:-10px;right:-10px;background:var(--primary);color:#fff;padding:.25rem .5rem;border-radius:.5rem;font-size:.75rem;font-weight:700}
+    .toggle{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid rgba(0,0,0,.08);padding:.35rem;border-radius:1rem}
+    .toggle button{border:none;background:transparent;padding:.35rem .75rem;border-radius:.75rem;cursor:pointer}
+    .toggle button[aria-pressed="true"]{background:var(--primary);color:#fff}
+    .save{color:var(--success);font-weight:700}
+
+    /* Tech list */
+    .tech-list{display:flex;flex-wrap:wrap;gap:.5rem}
+    .tech{background:var(--surface);border:1px solid rgba(0,0,0,.06);border-radius:.6rem;padding:.4rem .6rem}
+
+    /* FAQ */
+    details{background:var(--surface);border:1px solid rgba(0,0,0,.06);border-radius:.75rem;padding:.75rem 1rem}
+    details+details{margin-top:.5rem}
+    summary{font-weight:700;cursor:pointer}
+
+    /* Testimonials */
+    .quote{font-style:italic;color:var(--muted)}
+
+    /* Forms */
+    form{display:grid;gap:.75rem}
+    label{font-weight:600}
+    input, textarea, select{width:100%;padding:.7rem .8rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.15);background:var(--surface);color:var(--text)}
+    input:focus, textarea:focus, select:focus{outline:3px solid var(--ring);border-color:var(--primary)}
+    .help{font-size:.9rem;color:var(--muted)}
+    .success{color:var(--success);font-weight:700}
+    .error{color:var(--danger);font-weight:700}
+
+    /* Footer */
+    footer{background:var(--surface);border-top:1px solid rgba(0,0,0,.06);padding:2rem 0;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem}
+    .footnote{font-size:.85rem;margin-top:1rem}
+
+    /* Back to top */
+    .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transition:opacity .2s;}
+    .to-top.show{opacity:1;pointer-events:auto}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .pricing-wrap{grid-template-columns:1fr}
+      .menu{display:none;position:absolute;top:60px;left:0;right:0;background:var(--surface);padding:1rem;border-bottom:1px solid rgba(0,0,0,.06)}
+      .menu.open{display:flex;flex-direction:column}
+      .burger{display:inline-flex}
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="Synergy B.I Solutions Logo" />
-    <h1>Synergy B.I Solutions</h1>
-    <p><em>Transforming Data into Action</em></p>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <!-- Top info bar -->
+  <div class="topbar" aria-label="Contact and location bar">
+    <div class="container inner">
+      <div>📍 Kampala, Uganda</div>
+      <div>
+        <a href="mailto:info@synergybi.com" aria-label="Email Synergy">✉️ info@synergybi.com</a>
+        &nbsp;•&nbsp;
+        <a href="#contact" aria-label="Jump to contact form">Get a quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav aria-label="Primary">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <img src="assets/logo.png" alt="Synergy B.I Solutions logo" loading="lazy" />
+        <span>Synergy B.I Solutions</span>
+      </a>
+      <div class="menu" id="menu">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#tech">Technology</a>
+        <a href="#models">Engagement</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+        <button class="icon-btn burger" id="burger" aria-label="Toggle menu" aria-controls="menu" aria-expanded="false">☰</button>
+        <a class="cta" href="#contact" role="button">Request Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero" role="banner">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Business Intelligence as a Service</span>
+        <h1>Turn raw data into decisions — fast.</h1>
+        <p class="lead">We design, build and run your analytics stack: <strong>data extraction</strong>, <strong>cloud warehousing</strong>, and <strong>actionable insights</strong> — with training and support included.</p>
+        <div class="hero-cta">
+          <a class="cta" href="#pricing">See pricing</a>
+          <a class="cta ghost" href="#about">How it works</a>
+        </div>
+        <div class="pill-strip" aria-label="Key capabilities">
+          <span class="pill">Dashboards</span>
+          <span class="pill">ETL & Automation</span>
+          <span class="pill">Predictive Analytics</span>
+          <span class="pill">Training</span>
+          <span class="pill">24/7 Support (Premium)</span>
+        </div>
+      </div>
+      <div>
+        <div class="card" aria-label="Value proposition">
+          <span class="badge">Why Synergy?</span>
+          <h3>Clarity. Speed. Impact.</h3>
+          <p class="subtle">We remove the complexity of maintaining data infrastructure so your teams can focus on decisions that move the needle. From NGOs to enterprises, our BIaaS model scales to your needs.</p>
+          <ul>
+            <li>✔️ End-to-end delivery: from data sources to dashboards</li>
+            <li>✔️ Human-centered consulting and enablement</li>
+            <li>✔️ Secure, cloud-first architecture</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </header>
-  <main>
-    <section>
-      <h2>About Us</h2>
-      <div class="card">
-        <p>Synergy B.I Solutions provides Business Intelligence as a Service (BIaaS), offering end-to-end data solutions for businesses, NGOs, and governments. Our model simplifies data extraction, organization, and analysis—removing the complexity of maintaining infrastructure while empowering organizations to act on insights.</p>
-      </div>
-      <div class="card">
-        <h3>Our Structure</h3>
-        <p>We are built on specialized teams: 
-          <strong>Data Extraction</strong> (source integration), 
-          <strong>Data Organization</strong> (cloud-based warehousing), 
-          <strong>Analytics</strong> (algorithms & ML insights), and 
-          <strong>Client Support</strong> (ongoing assistance and training).</p>
-      </div>
-    </section>
 
-    <section>
-      <h2>Our Services</h2>
-      <div class="card"><strong>Data Extraction:</strong> Integration from internal and external sources.</div>
-      <div class="card"><strong>Data Organization:</strong> Secure, scalable cloud-based structuring.</div>
-      <div class="card"><strong>Data Insights:</strong> Advanced analytics and machine learning for decision-making.</div>
-      <div class="card"><strong>Consultation:</strong> Guidance on KPIs, strategy, and maximizing data use.</div>
-      <div class="card"><strong>Training Programs:</strong> Tailored sessions from data literacy to advanced analytics.</div>
-      <div class="card"><strong>Client Support:</strong> Dedicated assistance throughout every engagement.</div>
-    </section>
-
-    <section>
-      <h2>Packages & Pricing</h2>
-      <div class="pricing-grid">
-        <div class="pricing">
-          <h3>Starter</h3>
-          <p class="price">$999 / month</p>
-          <ul>
-            <li>Basic extraction & organization</li>
-            <li>Limited insights</li>
-            <li>Email support</li>
-          </ul>
-        </div>
-        <div class="pricing">
-          <h3>Standard</h3>
-          <p class="price">$2,499 / month</p>
-          <ul>
-            <li>Advanced extraction & organization</li>
-            <li>Comprehensive insights</li>
-            <li>Email & phone support</li>
-          </ul>
-        </div>
-        <div class="pricing">
-          <h3>Premium</h3>
-          <p class="price">Custom Pricing</p>
-          <ul>
-            <li>Full-scale extraction & organization</li>
-            <li>Predictive analytics</li>
-            <li>Dedicated account manager</li>
-            <li>24/7 support</li>
-          </ul>
+  <main id="main">
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title">About Synergy</h2>
+        <p class="subtle">We serve NGOs, government agencies, businesses, and individuals with practical, high-impact data services tailored to real-world needs.</p>
+        <div class="grid-3" style="margin-top:1rem">
+          <div class="card">
+            <h3>Business Model</h3>
+            <p>BI as a Service (BIaaS): we handle <strong>extraction</strong>, <strong>organization</strong>, and <strong>insights</strong> end-to-end, so you don’t need to maintain analytics infrastructure.</p>
+          </div>
+          <div class="card">
+            <h3>Our Structure</h3>
+            <p>Specialized teams across <strong>Data Extraction</strong>, <strong>Data Organization</strong> (cloud warehouse), <strong>Analytics</strong> (algorithms & ML), and <strong>Client Support</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>Outcomes</h3>
+            <p>Increased operational efficiency, happier users, and faster innovation through trustworthy data and clear, actionable dashboards.</p>
+          </div>
         </div>
       </div>
-      <p style="text-align:center;margin-top:1rem;">Add-ons: Data Visualization • Predictive Modelling • On-site Training</p>
     </section>
 
-    <section>
-      <h2>Technology Stack</h2>
-      <div class="card">
-        <p><strong>Tools:</strong> Microsoft Power BI, Tableau, Google Looker Studio, Excel, Google Sheets, PowerQuery, Snowflake</p>
-        <p><strong>Languages:</strong> SQL, Python</p>
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title">Services</h2>
+        <p class="subtle">Choose exactly what you need — or let us run the entire stack for you.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Data Extraction</h3>
+            <p>Integrate from internal & external sources for comprehensive coverage.</p>
+          </div>
+          <div class="card">
+            <h3>Data Organization</h3>
+            <p>Secure, scalable cloud warehousing for fast, reliable access.</p>
+          </div>
+          <div class="card">
+            <h3>Data Insights</h3>
+            <p>Advanced analytics & machine learning to inform decisions.</p>
+          </div>
+          <div class="card">
+            <h3>Consultation</h3>
+            <p>Strategy, KPI design, data governance and roadmap planning.</p>
+          </div>
+          <div class="card">
+            <h3>Training</h3>
+            <p>Data literacy to advanced analytics — tailored to your teams.</p>
+          </div>
+          <div class="card">
+            <h3>Client Support</h3>
+            <p>Dedicated assistance throughout; 24/7 for Premium plan.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:1rem">
+          <strong>Add‑ons:</strong> Data visualization, predictive modelling, on‑site training (scoped & priced separately).
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Why Choose Us?</h2>
-      <div class="card">
-        <p>In today’s fast-paced world, Synergy B.I Solutions enables smarter decisions by simplifying complex data. We combine scalable cloud solutions with human-centered consulting to increase efficiency, user satisfaction, and innovation. From startups to enterprises, our BIaaS adapts to your needs.</p>
+    <!-- Pricing -->
+    <section id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+          <div>
+            <h2 id="pricing-title">Packages & Pricing</h2>
+            <p class="subtle">Transparent, flexible plans. <span class="save">Save 15%</span> on yearly billing.</p>
+          </div>
+          <div class="toggle" role="group" aria-label="Billing period toggle">
+            <button id="billMonthly" aria-pressed="true">Monthly</button>
+            <button id="billYearly" aria-pressed="false">Yearly <span aria-hidden="true">🔒</span></button>
+          </div>
+        </div>
+        <div class="pricing-wrap" style="margin-top:1rem">
+          <div class="card price-card" id="plan-starter">
+            <h3>Starter</h3>
+            <div class="price" data-monthly="$999 / mo" data-yearly="$10,190 / yr"></div>
+            <ul>
+              <li>Basic extraction & organization</li>
+              <li>Limited insights</li>
+              <li>Email support</li>
+            </ul>
+            <a class="cta" href="#contact">Start Starter</a>
+          </div>
+          <div class="card price-card popular" id="plan-standard">
+            <span class="ribbon">Most Popular</span>
+            <h3>Standard</h3>
+            <div class="price" data-monthly="$2,499 / mo" data-yearly="$25,490 / yr"></div>
+            <ul>
+              <li>Advanced extraction & organization</li>
+              <li>Comprehensive insights</li>
+              <li>Priority email & phone support</li>
+            </ul>
+            <a class="cta" href="#contact">Start Standard</a>
+          </div>
+          <div class="card price-card" id="plan-premium">
+            <h3>Premium</h3>
+            <div class="price">Custom pricing</div>
+            <ul>
+              <li>Full-scale extraction & organization</li>
+              <li>Predictive analytics & custom insights</li>
+              <li>Dedicated account management</li>
+              <li>24/7 support</li>
+            </ul>
+            <a class="cta" href="#contact">Talk to Sales</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Contact Us</h2>
-      <div class="card">
-        <p>Email: <a href="mailto:info@synergybi.com">info@synergybi.com</a></p>
-        <p>Website: <a href="https://www.synergybi.com">www.synergybi.com</a></p>
-        <p>Location: Kampala, Uganda</p>
-        <a href="mailto:info@synergybi.com" class="button">Get in Touch</a>
+    <!-- Technology -->
+    <section id="tech" aria-labelledby="tech-title">
+      <div class="container">
+        <h2 id="tech-title">Technology</h2>
+        <p class="subtle">We meet you where you work today — and scale with you tomorrow.</p>
+        <div class="card">
+          <div class="tech-list" aria-label="Tools">
+            <span class="tech">Microsoft Power BI</span>
+            <span class="tech">Tableau</span>
+            <span class="tech">Google Looker Studio</span>
+            <span class="tech">Microsoft Excel</span>
+            <span class="tech">Google Sheets</span>
+            <span class="tech">Power Query</span>
+            <span class="tech">Snowflake</span>
+          </div>
+          <p style="margin:.75rem 0 0"><strong>Languages:</strong> SQL, Python</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagement Models -->
+    <section id="models" aria-labelledby="models-title">
+      <div class="container">
+        <h2 id="models-title">Engagement Models</h2>
+        <div class="grid-2">
+          <div class="card">
+            <span class="badge">Current</span>
+            <h3>Project‑based</h3>
+            <p>End-to-end delivery for defined scopes: dashboards, surveys, pipelines, databases, and BI analysis.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Long‑term</span>
+            <h3>Subscription (Client‑based)</h3>
+            <p>Developed, managed BI platform tailored to your needs with continuous improvements and support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Trust -->
+    <section id="trust" aria-labelledby="trust-title">
+      <div class="container">
+        <h2 id="trust-title">Trusted Results</h2>
+        <div class="grid-3">
+          <div class="card">
+            <p class="quote">“Synergy helped us centralize program data and cut reporting time by 60%.”</p>
+            <p><strong>Program Lead</strong> • NGO</p>
+          </div>
+          <div class="card">
+            <p class="quote">“Clear dashboards, fast deployment, and great training. Our teams finally love data.”</p>
+            <p><strong>Operations Manager</strong> • Private Sector</p>
+          </div>
+          <div class="card">
+            <p class="quote">“They met us where we were tool‑wise and scaled us to a secure cloud setup.”</p>
+            <p><strong>ICT Director</strong> • Government</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">FAQ</h2>
+        <details>
+          <summary>How soon can we get value?</summary>
+          <p>Most Starter/Standard clients see first dashboards within 2–4 weeks depending on data readiness. Premium projects may run in parallel tracks for faster outcomes.</p>
+        </details>
+        <details>
+          <summary>Do you work with our existing tools?</summary>
+          <p>Yes. We integrate with your current stack (Excel, Sheets, Power BI, Tableau, Looker Studio) and evolve the architecture over time.</p>
+        </details>
+        <details>
+          <summary>How do you keep our data secure?</summary>
+          <p>We follow least-privilege access, encrypted storage/transport, and client-owned cloud resources where required. Snowflake and major cloud platforms provide audited security controls.</p>
+        </details>
+        <details>
+          <summary>Can you train our team?</summary>
+          <p>Absolutely. From data literacy to advanced analytics and modeling. Training is included in plans and available as an add‑on on site.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">Contact Us</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Let’s talk about your data</h3>
+            <p class="subtle">Tell us about your goals, data sources, and timeline. We’ll reply within 1 business day.</p>
+            <form id="contactForm" aria-describedby="formHelp">
+              <input type="text" name="company" placeholder="Company / Organization" aria-label="Company" required />
+              <input type="email" name="email" placeholder="Work email" aria-label="Email" required />
+              <select name="plan" aria-label="Plan">
+                <option value="Starter">Starter</option>
+                <option value="Standard" selected>Standard</option>
+                <option value="Premium">Premium</option>
+                <option value="Unsure">Unsure</option>
+              </select>
+              <textarea name="message" rows="5" placeholder="What challenge can we help with?" aria-label="Message" required></textarea>
+              <!-- Honeypot -->
+              <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+              <button class="cta" type="submit">Send inquiry</button>
+              <p id="formHelp" class="help">No spam. We’ll only use your email to reply to your inquiry.</p>
+              <p id="formStatus" class="help" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Direct contacts</h3>
+            <p>📍 Kampala, Uganda</p>
+            <p>✉️ <a href="mailto:info@synergybi.com">info@synergybi.com</a></p>
+            <p>🌍 <a href="https://www.synergybi.com" target="_blank" rel="noopener">www.synergybi.com</a></p>
+            <hr style="border:none;border-top:1px solid rgba(0,0,0,.06);margin:1rem 0"/>
+            <p><strong>Office hours:</strong> Mon–Fri, 9:00–17:00 EAT</p>
+            <p><strong>Response time:</strong> within 1 business day</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Synergy B.I Solutions. All rights reserved.
+    <div class="container footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <img src="assets/logo.png" width="32" height="32" alt="Synergy logo small" loading="lazy" />
+          <strong>Synergy B.I Solutions</strong>
+        </div>
+        <p class="footnote">© 2025 Synergy B.I Solutions. All rights reserved.</p>
+      </div>
+      <div>
+        <strong>Company</strong>
+        <ul style="list-style:none;padding-left:0">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Legal</strong>
+        <ul style="list-style:none;padding-left:0">
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footnote" id="privacy">
+      <strong>Privacy:</strong> We only process data needed to deliver services and reply to inquiries. We do not sell personal data.
+    </div>
+    <div class="container footnote" id="terms">
+      <strong>Terms:</strong> Engagements are governed by a mutually agreed Statement of Work or Subscription Agreement.
+    </div>
   </footer>
+
+  <!-- Back to top -->
+  <a class="cta to-top" href="#home" aria-label="Back to top" id="toTop">↑ Top</a>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Synergy B.I Solutions",
+    "url": "https://www.synergybi.com",
+    "logo": "https://YOUR-USERNAME.github.io/YOUR-REPO/assets/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kampala",
+      "addressCountry": "UG"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "info@synergybi.com"
+    }],
+    "sameAs": []
+  }
+  </script>
+
+  <script>
+    // Theme toggle with localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    themeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '🌙' : '🌞';
+    });
+
+    // Mobile menu toggle
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger && burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Active section highlighting
+    const links = [...document.querySelectorAll('.menu a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          const id = '#' + entry.target.id;
+          const link = links.find(l=>l.getAttribute('href')===id);
+          link && link.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(s=>io.observe(s));
+
+    // Back to top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY>600){ toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
+    });
+
+    // Pricing toggle
+    const billMonthly = document.getElementById('billMonthly');
+    const billYearly = document.getElementById('billYearly');
+    const priceEls = document.querySelectorAll('.price-card .price');
+    function setBilling(period){
+      const yearly = period==='yearly';
+      billMonthly.setAttribute('aria-pressed', yearly? 'false':'true');
+      billYearly.setAttribute('aria-pressed', yearly? 'true':'false');
+      priceEls.forEach(el=>{
+        const m = el.getAttribute('data-monthly');
+        const y = el.getAttribute('data-yearly');
+        if(y && yearly){ el.textContent = y; }
+        else if(m){ el.textContent = m; }
+      });
+    }
+    setBilling('monthly');
+    billMonthly.addEventListener('click', ()=>setBilling('monthly'));
+    billYearly.addEventListener('click', ()=>setBilling('yearly'));
+
+    // Contact form: mailto fallback (no backend needed)
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      // Spam honeypot
+      if(form.website && form.website.value){ return; }
+      const data = Object.fromEntries(new FormData(form).entries());
+      const body = encodeURIComponent(
+        `Company: ${data.company}\nPlan: ${data.plan}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+      );
+      const mailto = `mailto:info@synergybi.com?subject=${encodeURIComponent('New inquiry from Synergy website')}&body=${body}`;
+      status.textContent = 'Opening your email app…';
+      window.location.href = mailto;
+      setTimeout(()=>{ status.textContent = 'If your email app did not open, please email info@synergybi.com directly.'; }, 1500);
+      form.reset();
+    });
+  </script>
+
+  <!-- Optional Analytics (uncomment and set your domain/property) -->
+  <!-- Google Analytics 4
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
+  </script> -->
 </body>
 </html>

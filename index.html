@@ -25,7 +25,7 @@
       margin: 0 auto 1rem;
     }
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 2rem;
       background: white;
@@ -41,6 +41,23 @@
     }
     ul {
       padding-left: 1.2rem;
+    }
+    .tech-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .tech-logos img {
+      height: 40px;
+      filter: grayscale(100%);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    .tech-logos img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
     }
     footer {
       background-color: #f4f6f8;
@@ -91,14 +108,14 @@
     <section>
       <h2>Technologies We Work With</h2>
       <p>We adapt to your ecosystem, leveraging widely used and trusted tools such as:</p>
-      <ul>
-        <li>Power BI</li>
-        <li>Google Sheets</li>
-        <li>KoboToolbox</li>
-        <li>Excel</li>
-        <li>Looker Studio</li>
-      </ul>
-      <p>Our goal is not to tie you to specific platforms, but to help you get the most value from the tools you already use—or guide you in choosing the right ones.</p>
+      <div class="tech-logos">
+        <img src="assets/powerbi.png" alt="Power BI" title="Power BI">
+        <img src="assets/googlesheets.png" alt="Google Sheets" title="Google Sheets">
+        <img src="assets/looker.png" alt="Looker Studio" title="Looker Studio">
+        <img src="assets/kobo.png" alt="KoboToolbox" title="KoboToolbox">
+        <img src="assets/excel.png" alt="Excel" title="Excel">
+      </div>
+      <p style="text-align:center; font-size:0.9rem; color:#555; margin-top:0.5rem;">Our goal is not to tie you to specific platforms, but to help you get the most value from the tools you already use—or guide you in choosing the right ones.</p>
     </section>
     <section class="contact">
       <h2>Contact Us</h2>

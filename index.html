@@ -5,43 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synergy B.I Solutions</title>
   <style>
+    :root {
+      --primary: #0a66c2;
+      --secondary: #00509e;
+      --light: #f4f6f8;
+      --dark: #2b2b2b;
+      --accent: #ff9800;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-      color: #2b2b2b;
+      background-color: var(--light);
+      color: var(--dark);
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
     header {
-      background-color: #0a66c2;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
     }
     header img {
-      width: 120px;
+      width: 100px;
       display: block;
       margin: 0 auto 1rem;
     }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
     main {
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
       padding: 2rem;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
     h2 {
-      color: #0a66c2;
+      color: var(--primary);
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+      margin-top: 2rem;
     }
     section {
       margin-bottom: 2rem;
     }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .pricing {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    .pricing h3 {
+      color: var(--secondary);
+    }
+    .pricing p.price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
     footer {
-      background-color: #f4f6f8;
+      background-color: var(--dark);
       text-align: center;
       font-size: 0.9rem;
-      color: #555;
-      padding: 1rem;
+      color: #ccc;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    a.button:hover {
+      background: var(--secondary);
     }
   </style>
 </head>
@@ -54,34 +126,87 @@
   <main>
     <section>
       <h2>About Us</h2>
-      <p>Synergy B.I Solutions is a data and business intelligence consultancy that helps organizations unlock insights, streamline operations, and drive growth. We serve NGOs, government agencies, businesses, and individuals with high-impact data services tailored to real-world needs.</p>
+      <div class="card">
+        <p>Synergy B.I Solutions provides Business Intelligence as a Service (BIaaS), offering end-to-end data solutions for businesses, NGOs, and governments. Our model simplifies data extraction, organization, and analysis—removing the complexity of maintaining infrastructure while empowering organizations to act on insights.</p>
+      </div>
+      <div class="card">
+        <h3>Our Structure</h3>
+        <p>We are built on specialized teams: 
+          <strong>Data Extraction</strong> (source integration), 
+          <strong>Data Organization</strong> (cloud-based warehousing), 
+          <strong>Analytics</strong> (algorithms & ML insights), and 
+          <strong>Client Support</strong> (ongoing assistance and training).</p>
+      </div>
     </section>
+
     <section>
       <h2>Our Services</h2>
-      <ul>
-        <li><strong>Dashboards & Reporting:</strong> Power BI, Looker Studio, Google Sheets</li>
-        <li><strong>Survey Design & Deployment:</strong> KoboToolbox, Google Forms, Excel</li>
-        <li><strong>Data Pipelines & Automation:</strong> ETL data flow solutions</li>
-        <li><strong>Organizational Data Structuring:</strong> Internal systems setup</li>
-        <li><strong>Database Setup:</strong> Scalable, secure data storage systems</li>
-        <li><strong>BI & Data Analysis:</strong> Visual reports and practical insights</li>
-      </ul>
+      <div class="card"><strong>Data Extraction:</strong> Integration from internal and external sources.</div>
+      <div class="card"><strong>Data Organization:</strong> Secure, scalable cloud-based structuring.</div>
+      <div class="card"><strong>Data Insights:</strong> Advanced analytics and machine learning for decision-making.</div>
+      <div class="card"><strong>Consultation:</strong> Guidance on KPIs, strategy, and maximizing data use.</div>
+      <div class="card"><strong>Training Programs:</strong> Tailored sessions from data literacy to advanced analytics.</div>
+      <div class="card"><strong>Client Support:</strong> Dedicated assistance throughout every engagement.</div>
     </section>
+
+    <section>
+      <h2>Packages & Pricing</h2>
+      <div class="pricing-grid">
+        <div class="pricing">
+          <h3>Starter</h3>
+          <p class="price">$999 / month</p>
+          <ul>
+            <li>Basic extraction & organization</li>
+            <li>Limited insights</li>
+            <li>Email support</li>
+          </ul>
+        </div>
+        <div class="pricing">
+          <h3>Standard</h3>
+          <p class="price">$2,499 / month</p>
+          <ul>
+            <li>Advanced extraction & organization</li>
+            <li>Comprehensive insights</li>
+            <li>Email & phone support</li>
+          </ul>
+        </div>
+        <div class="pricing">
+          <h3>Premium</h3>
+          <p class="price">Custom Pricing</p>
+          <ul>
+            <li>Full-scale extraction & organization</li>
+            <li>Predictive analytics</li>
+            <li>Dedicated account manager</li>
+            <li>24/7 support</li>
+          </ul>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1rem;">Add-ons: Data Visualization • Predictive Modelling • On-site Training</p>
+    </section>
+
+    <section>
+      <h2>Technology Stack</h2>
+      <div class="card">
+        <p><strong>Tools:</strong> Microsoft Power BI, Tableau, Google Looker Studio, Excel, Google Sheets, PowerQuery, Snowflake</p>
+        <p><strong>Languages:</strong> SQL, Python</p>
+      </div>
+    </section>
+
     <section>
       <h2>Why Choose Us?</h2>
-      <ul>
-        <li>Human-centered, practical solutions</li>
-        <li>Experience with public and private sector systems</li>
-        <li>Adaptable to your existing tools and budgets</li>
-        <li>Trusted by NGOs, businesses, and governments</li>
-        <li>Support and training available</li>
-      </ul>
+      <div class="card">
+        <p>In today’s fast-paced world, Synergy B.I Solutions enables smarter decisions by simplifying complex data. We combine scalable cloud solutions with human-centered consulting to increase efficiency, user satisfaction, and innovation. From startups to enterprises, our BIaaS adapts to your needs.</p>
+      </div>
     </section>
+
     <section>
       <h2>Contact Us</h2>
-      <p>Email: info@synergybi.com</p>
-      <p>Website: www.synergybi.com</p>
-      <p>Location: Kampala, Uganda</p>
+      <div class="card">
+        <p>Email: <a href="mailto:info@synergybi.com">info@synergybi.com</a></p>
+        <p>Website: <a href="https://www.synergybi.com">www.synergybi.com</a></p>
+        <p>Location: Kampala, Uganda</p>
+        <a href="mailto:info@synergybi.com" class="button">Get in Touch</a>
+      </div>
     </section>
   </main>
   <footer>
